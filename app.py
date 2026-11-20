@@ -5,7 +5,8 @@ from flask import Flask, abort, render_template, request
 
 from demos import DEMOS
 
-app = Flask(__name__)
+# Vercel serves public/** from its CDN, so static files live in public/static
+app = Flask(__name__, static_folder="public/static", static_url_path="/static")
 
 NAV = [("Home", "home"), ("About", "about"), ("Resume", "resume"),
        ("Skills", "skills"), ("Services", "services"),
@@ -75,4 +76,3 @@ def project_detail(slug):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
