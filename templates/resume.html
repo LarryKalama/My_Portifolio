@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}Resume{% endblock %}
+{% block content %}
+<section><div class="wrap">
+
+<div class="rhead">
+  <div>
+    <div class="rlabel">Resume</div>
+    <h2 class="title">Check my <span class="sky">resume</span></h2>
+  </div>
+  <a class="dl" href="{{ cv_url }}"{% if cv_url != '#' %} download{% endif %}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/></svg>
+    Download
+  </a>
+</div>
+
+<div class="rgrid">
+
+  <!-- LEFT COLUMN -->
+  <div class="rcol">
+
+    <div class="rsec">
+      <h3>Executive Summary</h3>
+      <div class="tl"><div>
+        <h4>Larry Duka Kalama</h4>
+        <p class="sum">A results-driven IT professional holding a Bachelor of Science in Information Technology from Masinde Muliro University of Science and Technology. Experienced in networking, cybersecurity, systems support, data analysis, and software development. Skilled in Cisco networking, enterprise ICT infrastructure, and business application development, with practical experience at KPLC and Horizon Aqua Company. Passionate about leveraging technology to solve problems, improve operational efficiency, and drive business growth.
+        <ul class="contact">
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Mombasa, Kenya</span>
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+254702372099">+254 702 372 099</a>
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zM20.46 3.49A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42z"/></svg>
+            <a href="https://wa.me/254702372099" target="_blank" rel="noopener">WhatsApp: +254 702 372 099</a>
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <a href="mailto:larrykalama8@gmail.com">larrykalama8@gmail.com</a>
+          </li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="rsec">
+      <h3>Education Background</h3>
+      <div class="tl">
+        <div>
+          <h4>Bachelor of Science in Information Technology<strong><b><i>~ Second Class (Upper Division)</strong><i/></b></h4>
+
+          <p class="org">Masinde Muliro University of Science and Technology</p>
+          <p class="keys"><b>Relevant coursework:</b></p>
+          <ul>
+            <li>Data Communication and Computer Networks</li>
+            <li>Object Oriented Programming</li>
+            <li>Artificial Intelligence</li>
+            <li>System Development Life Cycle</li>
+            <li>Data Analysis Techniques</li>
+            <li>Information Assurance and Security</li>
+            <li>Data Structures and Algorithms</li>
+            <li>Database Management &amp; SQL</li>
+            <li>IT Support and Maintenance</li>
+            <li>Ecommerce Systems</li>
+            <li>Industrial Training</li>
+            <li>Software Engineering</li>
+            <li>Web Application Security</li>
+            <li>Distributed Systems</li>
+            <li>Wireless Sensor Networks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="rsec">
+      <h3>Certifications</h3>
+      <div class="tl">
+        
+        <div><h4>Cybersecurity Analyst</h4>
+          <p class="date">2025 ~ CISCO</p>
+        </div>
+        <div><h4>Introduction to Cybersecurity</h4>
+        <p class="date">2025 ~ CISCO</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="rcol">
+    <div class="rsec">
+      <h3>Work Experience</h3>
+      <div class="tl">
+
+        <div>
+          <h4>Data Entry & Sales Analysis </h4>
+          <p class="org">Horizon Aqua Company (Pure Drinking Water Supplier)</p>
+          <span class="date">May 2026 - July 2026</span>
+          <p class="keys"><b>Key skills:</b> Microsoft Excel, Data Entry, Sales Analysis, Data Cleaning, Data Visualization, Reporting</p>
+          <p><b>Key Roles and Responsibilities:</b></p>
+          <ul>
+            <li>Recorded, organized, and maintained monthly sales data from different company depots using Microsoft Excel</li>
+            <li>Consolidated sales records from multiple depots to support accurate monthly sales analysis and performance tracking.</li>
+            <li>Analyzed sales data to identify trends, compare depot performance, and monitor monthly sales collections.</li>
+            <li>Created graphical representations of sales performance using Excel charts and graphs to present data clearly and support decision-making.</li>
+            <li>Prepared structured spreadsheets and monthly sales reports to improve data accuracy, accessibility, and reporting efficiency.</li>
+            <li>Used Excel formulas and functions to calculate sales totals, summarize figures, and compare performance across different depots.</li>
+            <li><b>Key achievement:</b> Improved the organization and presentation of monthly sales data by transforming raw sales records into structured Excel reports and visual charts, making it easier to monitor depot performance and track business growth.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Industrial Attachment · ICT Department</h4>
+          <p class="org">Kenya Power &amp; Lighting Company (KPLC), Coast Region, Mombasa</p>
+          <span class="date">May 2025 – July 2025</span>
+          <p class="keys"><b>Key skills:</b> Cisco Routing & Switching, LAN/WAN Administration, Fiber Optic Networks, ICT Technical Support, Enterprise Systems, SCADA Support, Telecommunications</p>
+          <p><b>Key Roles and Responsibilities:</b></p>
+          <ul>
+            <li>Provided first-line ICT technical support, including computer installation, configuration, troubleshooting, repair and preventive maintenance.</li>
+            <li>Installed, configured and supported enterprise business applications, including DCS, SAP, DTMMMS, INCMS and TMS.</li>
+            <li>Diagnosed and resolved LAN/WAN connectivity issues to support reliable network operations.</li>
+            <li>Assisted in configuring, maintaining and troubleshooting Cisco routers (3900, 2900 and 2800 series), Cisco switches (2960 and 2950 series), and FOX615 multiplexers.</li>
+            <li>Installed and configured Cisco IP phones, including models 6921 and 7821, within the corporate network.</li>
+            <li>Participated in fiber-optic network installation, splicing, fault diagnosis and testing involving ADSS and OPGW cables, OTDR equipment and optical power meters.</li>
+            <li>Supported SCADA infrastructure and Remote Terminal Units (RTUs) used in power-grid monitoring and control environments.</li>
+            <li>Gained practical exposure to telecommunications infrastructure, including VHF mobile radio systems and point-to-point microwave links.</li>
+            <li>Offered user guidance and training on ICT systems and network management procedures.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+{% endblock %}

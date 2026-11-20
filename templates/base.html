@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}Larry Kalama{% endblock %} · Network, Software &amp; Security Engineer</title>
+<meta name="description" content="Larry Kalama: network engineering, software engineering and cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% if current != 'home' %}
+<header class="top"><div class="wrap bar">
+<a class="logo" href="{{ url_for('home') }}"><b>Larry</b> Kalama</a>
+<button id="burger" aria-label="Menu" aria-expanded="false"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<nav class="links" id="nav" aria-label="Main">
+{% for label, ep in nav %}<a href="{{ url_for(ep) }}"{% if ep == current %} class="act"{% endif %}>{{ label }}</a>{% endfor %}
+</nav>
+</div></header>
+{% endif %}
+<main>{% block content %}{% endblock %}</main>
+{% if current != 'home' %}<footer>© 2026 Larry Kalama. All rights reserved.</footer>{% else %}<span class="credit">Designed by Larry Kalama</span>{% endif %}
+<a class="cv" href="#" aria-label="Download CV (link to be added)">CV</a>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

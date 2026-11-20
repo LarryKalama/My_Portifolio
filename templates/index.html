@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Larry Kalama{% endblock %}
+{% block content %}
+<section class="hero"><div class="wrap hero-grid">
+<div class="photo"><span>LK</span><img src="{{ url_for('static', filename='img/larry.jpg') }}" alt="Larry Kalama" onerror="this.remove()"></div>
+<div>
+<h1>Larry Kalama</h1>
+<p class="role">I'm a passionate <span class="typed" id="typed">Network Engineer</span><span class="caret">|</span></p>
+<nav class="hnav" aria-label="Pages">
+{% for label, ep in nav %}<a href="{{ url_for(ep) }}">{{ label }}</a>{% endfor %}
+</nav>
+{% include "_social.html" %}
+</div></div></section>
+{% endblock %}
