@@ -144,7 +144,10 @@ DEMOS = {
              "caption": "Static IPv4 192.168.1.2 with subnet mask 255.255.255.0 on FastEthernet0.", "fit": "30%"},
             {"file": "img/projects/peer-to-peer-network/04-ping-arp.webp", "title": "Ping and ARP",
              "caption": "Four ping replies with 0% loss, then arp -a showing 192.168.1.2 resolved to MAC 000a.f375.bbbb (dynamic).", "fit": "70%"},
-            {"file": None, "title": "PDU headers", "caption": "Screenshot of the packet headers in simulation mode coming soon."},
+            {"file": "img/projects/peer-to-peer-network/05-pdu-pc-student.webp", "title": "PDU headers: PC-Student",
+             "caption": "The echo request arrives as ICMP type 8 from 192.168.1.1 (Ethernet II 0002.16A1.AAAA to 000A.F375.BBBB). The reply leaves as ICMP type 0 from 192.168.1.2.", "fit": "35%"},
+            {"file": "img/projects/peer-to-peer-network/06-pdu-pc-faculty.webp", "title": "PDU headers: PC-Faculty",
+             "caption": "The echo reply arrives as ICMP type 0 from 192.168.1.2 to 192.168.1.1 (Ethernet II 000A.F375.BBBB to 0002.16A1.AAAA).", "fit": "35%"},
         ],
     },
 }
