@@ -34,7 +34,7 @@
     {% if s.file %}
     <figure class="shot">
       <button type="button" data-shot data-full="{{ url_for('static', filename=s.file) }}" data-title="{{ s.title }}" data-caption="{{ s.caption }}" aria-label="Enlarge: {{ s.title }}">
-        <img src="{{ url_for('static', filename=s.file) }}" alt="{{ d.title }}: {{ s.title }}" loading="lazy">
+        <img src="{{ url_for('static', filename=s.file) }}" alt="{{ d.title }}: {{ s.title }}" loading="lazy"{% if s.fit %} style="object-fit:cover;object-position:50% {{ s.fit }}"{% endif %}>
       </button>
       <figcaption><b>{{ s.title }}</b><span>{{ s.caption }}</span></figcaption>
     </figure>

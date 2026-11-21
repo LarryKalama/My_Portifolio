@@ -6,10 +6,10 @@
 <div class="filters" role="group" aria-label="Filter projects"><button class="on" data-f="all">All</button><button data-f="network">Network</button><button data-f="software">Software</button><button data-f="security">Security</button></div>
 <div class="grid3" id="pg">
 <article class="card proj" data-cat="network">
-  <a class="thumb" href="{{ url_for('project_detail', slug='peer-to-peer-network') }}" aria-label="Open the Peer-to-Peer Network lab"><span>P2P</span></a>
+  <a class="thumb" href="{{ url_for('project_detail', slug='peer-to-peer-network') }}" aria-label="Open the Peer-to-Peer Network lab"><img src="{{ url_for('static', filename='img/projects/peer-to-peer-network/01-topology.webp') }}" alt="Peer-to-peer network topology in Packet Tracer" onerror="this.replaceWith('P2P')"></a>
   <h3>Peer-to-Peer Network Lab</h3>
-  <p>Peer-to-peer network built and tested in Cisco Packet Tracer: computers share resources directly with no central server, with addressing and connectivity verified by ping.</p>
-  <div class="chips"><span>Packet Tracer</span><span>LAN</span><span>IP Addressing</span></div>
+  <p>Peer-to-peer network built in Cisco Packet Tracer: two PCs linked directly by a cross-over cable, with static IP addressing, ping tests, ARP resolution and PDU header analysis.</p>
+  <div class="chips"><span>Packet Tracer</span><span>Static IP</span><span>ARP</span></div>
   <div class="plinks"><a href="{{ url_for('project_detail', slug='peer-to-peer-network') }}">View lab</a></div>
 </article>
 
