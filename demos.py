@@ -117,7 +117,7 @@ DEMOS = {
                     "Each one is given a static IP address, then connectivity, ARP resolution and packet headers are checked."),
         "tags": ["Cisco Packet Tracer", "Peer-to-Peer", "Static IP", "ICMP / Ping", "ARP", "PDU Headers"],
         "video": "peer-to-peer-network-demo.mp4",
-        "youtube": "",
+        "youtube": "QFj6glKtypM",
         "download": {"file": "files/peer-to-peer-network.pkt", "label": "Download Packet Tracer file"},
         "flow": [
             ("Build the network", "Place PC-Faculty and PC-Student and join them FastEthernet to FastEthernet with a copper cross-over cable."),
