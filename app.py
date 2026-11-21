@@ -5,7 +5,6 @@ from flask import Flask, abort, render_template, request
 
 from demos import DEMOS
 
-# Vercel serves public/** from its CDN, so static files live in public/static
 app = Flask(__name__, static_folder="public/static", static_url_path="/static")
 
 NAV = [("Home", "home"), ("About", "about"), ("Resume", "resume"),
@@ -71,7 +70,9 @@ def project_detail(slug):
         abort(404)
     video_ok = bool(demo.get("video")) and os.path.exists(
         os.path.join(app.static_folder, "video", demo["video"]))
-    return render_template("project_detail.html", d=demo, slug=slug, video_ok=video_ok)
+    dl = demo.get("download")
+    dl_ok = bool(dl) and os.path.exists(os.path.join(app.static_folder, dl["file"]))
+    return render_template("project_detail.html", d=demo, slug=slug, video_ok=video_ok, dl_ok=dl_ok)
 
 
 if __name__ == "__main__":

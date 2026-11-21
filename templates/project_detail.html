@@ -1,132 +1,57 @@
 {% extends "base.html" %}
 {% block title %}{{ d.title }}{% endblock %}
 {% block content %}
-<section>
-  <div class="wrap demo">
+<section><div class="wrap demo">
 
-    <a class="crumb" href="{{ url_for('projects') }}">&larr; All projects</a>
+<a class="crumb" href="{{ url_for('projects') }}">&larr; All projects</a>
 
-    {# ── Hero / header ─────────────────────────────────────────────── #}
-    <header class="demo-head">
-      <h2 class="title">
-        <small>Software project</small>
-        {{ d.title }}
-      </h2>
-      <p class="demo-lead">{{ d.summary }}</p>
-      <div class="chips">
-        {% for t in d.tags %}
-          <span>{{ t }}</span>
-        {% endfor %}
-      </div>
-    </header>
+<div class="demo-head">
+  <h2 class="title"><small>{{ d.kind or "Software project" }}</small>{{ d.title }}</h2>
+  <p>{{ d.summary }}</p>
+  <div class="chips">{% for t in d.tags %}<span>{{ t }}</span>{% endfor %}</div>
+  {% if dl_ok %}<p style="margin-top:20px"><a class="dl" href="{{ url_for('static', filename=d.download.file) }}" download>{{ d.download.label }}</a></p>{% endif %}
+</div>
 
-    {# ── How it works ──────────────────────────────────────────────── #}
-    <h3 class="dsec">How it works</h3>
-    <ol class="flow">
-      {% for name, text in d.flow %}
-      <li>
-        <span class="n" aria-hidden="true">{{ loop.index }}</span>
-        <b>{{ name }}</b>
-        <p>{{ text }}</p>
-      </li>
-      {% endfor %}
-    </ol>
+<h3 class="dsec">How it works</h3>
+<ol class="flow">
+  {% for name, text in d.flow %}
+  <li><span class="n">{{ loop.index }}</span><b>{{ name }}</b><p>{{ text }}</p></li>
+  {% endfor %}
+</ol>
 
-    {# ── Video demo ────────────────────────────────────────────────── #}
-    <h3 class="dsec">Video demo</h3>
-    {% if d.youtube %}
-      <div class="vid">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/{{ d.youtube }}"
-          title="{{ d.title }} demo video"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
-      </div>
-    {% elif video_ok %}
-      <div class="vid">
-        <video
-          controls
-          preload="metadata"
-          playsinline
-          src="{{ url_for('static', filename='video/' ~ d.video) }}">
-        </video>
-      </div>
+<h3 class="dsec">Video demo</h3>
+{% if d.youtube %}
+  <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/{{ d.youtube }}" title="{{ d.title }} demo video" allowfullscreen loading="lazy"></iframe></div>
+{% elif video_ok %}
+  <div class="vid"><video controls preload="metadata" playsinline src="{{ url_for('static', filename='video/' ~ d.video) }}"></video></div>
+{% else %}
+  <div class="vid-ph"><div><b>Video demo coming soon</b><p>Save the recording as <code>public/static/video/{{ d.video }}</code> and it will appear here.</p></div></div>
+{% endif %}
+
+<h3 class="dsec">Screenshots</h3>
+<div class="shots">
+  {% for s in d.shots %}
+    {% if s.file %}
+    <figure class="shot">
+      <button type="button" data-shot data-full="{{ url_for('static', filename=s.file) }}" data-title="{{ s.title }}" data-caption="{{ s.caption }}" aria-label="Enlarge: {{ s.title }}">
+        <img src="{{ url_for('static', filename=s.file) }}" alt="{{ d.title }}: {{ s.title }}" loading="lazy">
+      </button>
+      <figcaption><b>{{ s.title }}</b><span>{{ s.caption }}</span></figcaption>
+    </figure>
     {% else %}
-      <div class="vid-ph">
-        <div>
-          <b>Video demo coming soon</b>
-          <p>Save the recording as <code>static/video/{{ d.video }}</code> and it will appear here.</p>
-        </div>
-      </div>
+    <figure class="shot shot-ph">
+      <div class="shot-empty"><span>Coming soon</span></div>
+      <figcaption><b>{{ s.title }}</b><span>{{ s.caption }}</span></figcaption>
+    </figure>
     {% endif %}
+  {% endfor %}
+</div>
 
-    {# ── Screenshots ───────────────────────────────────────────────── #}
-    <h3 class="dsec">Screenshots</h3>
-    <div class="shots">
-      {% for s in d.shots %}
-        {% if s.file %}
-        <figure class="shot">
-          <button
-            type="button"
-            data-shot
-            data-full="{{ url_for('static', filename=s.file) }}"
-            data-title="{{ s.title }}"
-            data-caption="{{ s.caption }}"
-            aria-label="Enlarge: {{ s.title }}">
-            <img
-              src="{{ url_for('static', filename=s.file) }}"
-              alt="{{ d.title }}: {{ s.title }}"
-              loading="lazy"
-              width="800"
-              height="360">
-          </button>
-          <figcaption>
-            <b>{{ s.title }}</b>
-            <span>{{ s.caption }}</span>
-          </figcaption>
-        </figure>
-        {% else %}
-        <figure class="shot shot-ph">
-          <div class="shot-empty"><span>Coming soon</span></div>
-          <figcaption>
-            <b>{{ s.title }}</b>
-            <span>{{ s.caption }}</span>
-          </figcaption>
-        </figure>
-        {% endif %}
-      {% endfor %}
-    </div>
+<h3 class="dsec">Features</h3>
+<ul class="feat">{% for f in d.features %}<li>{{ f }}</li>{% endfor %}</ul>
 
-    {# ── Features ──────────────────────────────────────────────────── #}
-    <h3 class="dsec">Features</h3>
-    <ul class="feat">
-      {% for f in d.features %}
-        <li>{{ f }}</li>
-      {% endfor %}
-    </ul>
+</div></section>
 
-    {# ── Optional design principles block (only if you pass d.principles) #}
-    {% if d.principles %}
-    <h3 class="dsec">Design principles</h3>
-    <div class="principles">
-      {% for p in d.principles %}
-      <article class="principle">
-        <span class="p-num" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span>
-        <div>
-          <b>{{ p.title }}</b>
-          <p>{{ p.text }}</p>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-  </div>
-</section>
-
-{# ── Full-screen lightbox ──────────────────────────────────────────── #}
 <dialog class="lb" id="lightbox" aria-label="Screenshot viewer">
   <div class="lb-bar">
     <span class="lb-title"></span>
@@ -137,16 +62,10 @@
       <button type="button" class="lb-tool lb-close" aria-label="Close">&times;</button>
     </div>
   </div>
-  <div class="lb-stage">
-    <img src="" alt="" draggable="false">
-  </div>
+  <div class="lb-stage"><img src="" alt="" draggable="false"></div>
   <button type="button" class="lb-nav lb-prev" aria-label="Previous screenshot">&#8249;</button>
   <button type="button" class="lb-nav lb-next" aria-label="Next screenshot">&#8250;</button>
-  <p class="lb-cap">
-    <span class="lb-text"></span>
-    <small>Scroll or pinch to zoom · drag to move · double-click to zoom in and out</small>
-  </p>
+  <p class="lb-cap"><span class="lb-text"></span><small>Scroll or pinch to zoom &middot; drag to move &middot; double-click to zoom in and out</small></p>
 </dialog>
-
 <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 {% endblock %}

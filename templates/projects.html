@@ -5,16 +5,24 @@
 <h2 class="title"><small>Portfolio</small>My <span class="sky">works</span></h2>
 <div class="filters" role="group" aria-label="Filter projects"><button class="on" data-f="all">All</button><button data-f="network">Network</button><button data-f="software">Software</button><button data-f="security">Security</button></div>
 <div class="grid3" id="pg">
+<article class="card proj" data-cat="network">
+  <a class="thumb" href="{{ url_for('project_detail', slug='peer-to-peer-network') }}" aria-label="Open the Peer-to-Peer Network lab"><span>P2P</span></a>
+  <h3>Peer-to-Peer Network Lab</h3>
+  <p>Peer-to-peer network built and tested in Cisco Packet Tracer: computers share resources directly with no central server, with addressing and connectivity verified by ping.</p>
+  <div class="chips"><span>Packet Tracer</span><span>LAN</span><span>IP Addressing</span></div>
+  <div class="plinks"><a href="{{ url_for('project_detail', slug='peer-to-peer-network') }}">View lab</a></div>
+</article>
+
 <article class="card proj" data-cat="network security"><div class="thumb">VLAN</div><h3>Zero-trust home lab</h3><p>Multi-VLAN lab with firewall policy and WireGuard VPN. <span class="ph">Add result.</span></p><div class="chips"><span>pfSense</span><span>WireGuard</span></div></article>
 
 <article class="card proj" data-cat="software">
   <a class="thumb" href="{{ url_for('project_detail', slug='cafeteria-pos') }}" aria-label="Open the Cafeteria POS demo"><img src="{{ url_for('static', filename='img/projects/cafeteria-pos/02-dashboard.webp') }}" alt="Cafeteria POS dashboard" onerror="this.replaceWith('POS')"></a>
   <h3>Cafeteria POS</h3>
-  <p>Point-of-sale system where staff log in, take orders and customers pay with either cash or an M-Pesa STK push prompt. Includes stock control, expenses and sales analytics.</p>
+  <p>Point-of-sale system where staff log in, take orders and customers pay with an M-Pesa STK push prompt. Includes stock control, expenses and sales analytics.</p>
   <div class="chips"><span>Python</span><span>Django</span><span>M-Pesa STK Push</span></div>
   <div class="plinks"><a href="{{ url_for('project_detail', slug='cafeteria-pos') }}">View demo</a></div>
 </article>
-<!--
+
 <article class="card proj" data-cat="software">
   <div class="thumb"><img src="{{ url_for('static', filename='img/projects/hams.png') }}" alt="Horizon Aqua Management System screenshot" onerror="this.replaceWith('HAMS')"></div>
   <h3>Horizon Aqua Management System (HAMS)</h3>
@@ -25,7 +33,7 @@
     {# <a href="https://github.com/your-username/hams" target="_blank" rel="noopener">GitHub</a> #}
   </div>
 </article>
-  -->
+
 <article class="card proj" data-cat="software">
   <a class="thumb" href="{{ url_for('project_detail', slug='biashara-smart-hub') }}" aria-label="Open the Biashara Smart Hub demo"><img src="{{ url_for('static', filename='img/projects/biashara.png') }}" alt="Biashara Smart Hub screenshot" onerror="this.replaceWith('BSH')"></a>
   <h3>Biashara Smart Hub</h3>
@@ -37,8 +45,8 @@
     {# <a href="https://github.com/your-username/biashara-smart-hub" target="_blank" rel="noopener">GitHub</a> #}
   </div>
 </article>
-<!--
+
 <article class="card proj" data-cat="security"><div class="thumb">SCAN</div><h3>Vulnerability assessment</h3><p>Scoped, scanned and reported a small business network. <span class="ph">Link report.</span></p><div class="chips"><span>Nmap</span><span>OpenVAS</span></div></article>
 <article class="card proj" data-cat="software security"><div class="thumb">LOG</div><h3>Brute-force log analyzer</h3><p>Parses SSH and web logs and raises alerts. <span class="ph">Link repo.</span></p><div class="chips"><span>Go</span><span>Elasticsearch</span></div></article>
---></div></div></section>
+</div></div></section>
 {% endblock %}

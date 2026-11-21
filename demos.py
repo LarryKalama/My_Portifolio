@@ -1,5 +1,7 @@
 """Project demo pages. Add a new entry to DEMOS to create /projects/<slug>.
 
+kind:   optional label above the title (default "Software project").
+download: optional {"file": "files/lab.pkt", "label": "..."} shown as a button when the file exists in static/.
 shots:  file is relative to static/. Use file=None for a "coming soon" placeholder.
 video:  put an .mp4 in static/video/ and set "video" to its file name, or set "youtube" to a video id.
 """
@@ -7,133 +9,50 @@ video:  put an .mp4 in static/video/ and set "video" to its file name, or set "y
 DEMOS = {
     "cafeteria-pos": {
         "title": "Cafeteria POS",
-        "summary": (
-            "End-to-end point-of-sale system built for cafeterias. "
-            "Staff authenticate, build orders placed by customers from a live menu with real-time stock, "
-            "and customers make payments to complete the order either by cash or M-Pesa STK Push. "
-            "The same system tracks expenses, surfaces sales analytics, works offline as a PWA, "
-            "and runs in production on Railway with media served from Cloudinary."
-        ),
-        "tags": [
-            "Python",
-            "Django",
-            "PostgreSQL",
-            "M-Pesa STK Push",
-            "PWA",
-            "Cloudinary",
-            "Railway",
-        ],
+        "summary": ("A point-of-sale system for a cafeteria. Staff log in, build an order from the menu, "
+                    "and the customer pays with an M-Pesa STK push prompt on their phone. Stock, expenses "
+                    "and sales reports are handled in the same system."),
+        "tags": ["Python", "Django", "M-Pesa Daraja API", "STK Push"],
         "video": "cafeteria-pos-demo.mp4",
         "youtube": "",
         "flow": [
-            (
-                "Staff login",
-                "Each waiter signs in with their own account. Role-based access protects orders, "
-                "expenses and reports so every action is attributable.",
-            ),
-            (
-                "Build the order",
-                "Browse items by category, see live stock badges, adjust quantities in a sticky cart, "
-                "and optionally add customer name or table number — designed for speed at peak service.",
-            ),
-            (
-                "Choose payment method",
-                "Complete the sale with cash, credit, or M-Pesa. Selecting M-Pesa triggers an STK Push "
-                "to the customer’s phone number.",
-            ),
-            (
-                "STK Push & confirmation",
-                "Customer approves the payment with their PIN . "
-                "Safaricom’s callback hits the server and marks the payment successful automatically.",
-            ),
-            (
-                "Receipt & live records",
-                "A permanent order record and receipt are created. Stock is decremented, the dashboard "
-                "KPIs refresh, and sales analytics update in real time.",
-            ),
+            ("Log in", "Each waiter signs in with their own account, so every order is linked to who took it."),
+            ("Build the order", "Pick items by category, set quantities, and add an optional customer name and table number."),
+            ("Pay by STK push", "A payment prompt is sent to the customer's phone and they enter their M-Pesa PIN."),
+            ("Order recorded", "The order appears in the orders list, stock updates, and sales figures feed the reports."),
         ],
         "features": [
-            "M-Pesa STK Push (CustomerBuyGoodsOnline / PINLESS Till) with real callback handling",
-            "Cash, credit and mobile-money payment paths in one order flow",
-            "Live stock feedback on the order screen — prevents overselling",
-            "Dashboard KPIs + low-stock alerts for at-a-glance operations",
-            "Expense tracking with staff attribution",
-            "Sales analytics (revenue, top sellers, payment mix)",
-            "Offline-first PWA: service worker, offline queue and fallback page",
-            "Media on Cloudinary (no broken image 404s in production)",
-            "Production deployment on Railway (Gunicorn + PostgreSQL + Whitenoise)",
-            "Null-safe templates and robust error handling on payment / logout / expenses",
-            "Receipt generation after successful payment",
-            "Dark + gold visual system tuned for long service shifts",
+            "Role-based login for staff",
+            "Order screen with categories, live stock counts and a cart",
+            "M-Pesa STK push payment",
+            "Orders list with status filter and printing",
+            "Menu and category management",
+            "Stock levels with low-stock and out-of-stock alerts",
+            "Expense tracking with date filters and CSV export",
+            "Sales analytics: payment methods, top-selling items, waiter performance",
         ],
         "shots": [
-            {
-                "file": "img/projects/cafeteria-pos/01-login.webp",
-                "title": "Staff Login",
-                "caption": "Clean dark form with gold accents. Role-based access protects sales and expense data.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/02-dashboard.webp",
-                "title": "Dashboard",
-                "caption": "KPI cards (revenue, orders, average ticket, low-stock alerts) plus recent orders for instant situational awareness.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/03-new-order.webp",
-                "title": "New Order",
-                "caption": "Category tabs, live stock indicators, and a sticky cart. Designed for speed during peak service.",
-            },
+            {"file": "img/projects/cafeteria-pos/01-login.webp", "title": "Staff login",
+             "caption": "Each user signs in with their own account."},
+            {"file": "img/projects/cafeteria-pos/02-dashboard.webp", "title": "Dashboard",
+             "caption": "Today's orders and sales, pending credit and low-stock items at a glance, with recent orders and one-click Add Stock."},
+            {"file": "img/projects/cafeteria-pos/03-new-order.webp", "title": "New order",
+             "caption": "Items by category with live stock counts, a cart with quantities, optional customer and table, and Place Order."},
             {"file": None, "title": "STK push payment",
              "caption": "Screenshot of the M-Pesa prompt coming soon."},
-            {
-                "file": "img/projects/cafeteria-pos/04-orders.webp",
-                "title": "All Orders",
-                "caption": "Filterable list with clear status badges (Paid, Pending, Credit). Easy search and date filters.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/05-menu.webp",
-                "title": "Menu Items",
-                "caption": "CRUD for products with images (Cloudinary), prices and categories. Instant availability control.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/06-stock.webp",
-                "title": "Stock Levels",
-                "caption": "Visual stock overview with low-stock warnings so staff never sell what they don’t have.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/07-expenses.webp",
-                "title": "Expenses",
-                "caption": "Track daily costs with paid-by attribution. Null-safe templates keep the list stable under incomplete data.",
-            },
-            {
-                "file": "img/projects/cafeteria-pos/08-analytics.webp",
-                "title": "Sales Analytics",
-                "caption": "Charts and summaries for revenue trends, top items and payment-method mix — ready for management decisions.",
-            },
-        ],
-        "principles": [
-            {
-                "title": "Speed-first order flow",
-                "text": "Category tabs, live stock badges and a sticky cart keep staff moving during peak service without hunting for controls.",
-            },
-            {
-                "title": "Dark + gold visual system",
-                "text": "High-contrast dark UI with gold accents reduces eye strain on long shifts and makes status and money amounts easy to scan.",
-            },
-            {
-                "title": "Live stock feedback",
-                "text": "Every menu item shows current stock. The system never lets staff sell what is already zero.",
-            },
-            {
-                "title": "Clear status language",
-                "text": "Paid, Pending, Credit and low-stock states use consistent colour and wording so the whole team reads the same signals.",
-            },
-            {
-                "title": "Role-aware & auditable",
-                "text": "Login gates every action. Expenses record who paid them. Orders and payments leave a clear trail for the owner.",
-            },
+            {"file": "img/projects/cafeteria-pos/04-orders.webp", "title": "All orders",
+             "caption": "Every order with its waiter, total and status. Filter by status, view or print."},
+            {"file": "img/projects/cafeteria-pos/05-menu.webp", "title": "Menu items",
+             "caption": "Items with category, price and availability. Search, edit, delete and manage categories."},
+            {"file": "img/projects/cafeteria-pos/06-stock.webp", "title": "Stock levels",
+             "caption": "Current stock, unit, reorder level and status, with filters for low and out-of-stock items."},
+            {"file": "img/projects/cafeteria-pos/07-expenses.webp", "title": "Expenses",
+             "caption": "Expenses by category with totals, date filters and CSV export."},
+            {"file": "img/projects/cafeteria-pos/08-analytics.webp", "title": "Sales analytics",
+             "caption": "Total sales, order count, average order, payment methods and top-selling items for any date range."},
         ],
     },
-"biashara-smart-hub": {
+    "biashara-smart-hub": {
         "title": "Biashara Smart Hub",
         "summary": ("An AI-powered business intelligence platform for Kenyan small and medium enterprises. "
                     "Owners record sales, expenses and stock, watch a live dashboard, get sales forecasts and a "
@@ -188,6 +107,37 @@ DEMOS = {
             {"file": None, "title": "Loan readiness", "caption": "Credit score and the Loan Readiness Report for banks and lenders."},
             {"file": None, "title": "USSD and WhatsApp", "caption": "Feature-phone menu and WhatsApp bot for quick queries and alerts."},
             {"file": None, "title": "Staff, audit trail and language", "caption": "Staff roles, activity log and English/Swahili switch."},
+        ],
+    },
+    "peer-to-peer-network": {
+        "kind": "Network project",
+        "title": "Peer-to-Peer Network Lab",
+        "summary": ("A peer-to-peer network built and tested in Cisco Packet Tracer. Computers connect to one "
+                    "another directly, with no central server, and each one can share its own resources and "
+                    "reach every other peer."),
+        "tags": ["Cisco Packet Tracer", "LAN", "IP Addressing", "Switching", "Connectivity Testing"],
+        "video": "peer-to-peer-network-demo.mp4",
+        "youtube": "",
+        "download": {"file": "files/peer-to-peer-network.pkt", "label": "Download Packet Tracer file"},
+        "flow": [
+            ("Plan the topology", "Decide how many peers are needed and how they connect to one another."),
+            ("Build it in Packet Tracer", "Place the end devices and the switch, then cable them together."),
+            ("Address every peer", "Give each computer an IP address and subnet mask in the same network."),
+            ("Test connectivity", "Use ping between peers to prove that every computer can reach the others."),
+        ],
+        "features": [
+            "No dedicated server: every computer is both client and server",
+            "All peers on one LAN, connected through a switch",
+            "Static IP addressing and subnet masks on every host",
+            "Peer-to-peer communication verified with ping",
+            "Packet flow inspected in Packet Tracer simulation mode",
+            "Downloadable .pkt file so the lab can be opened and tried",
+        ],
+        "shots": [
+            {"file": None, "title": "Network topology", "caption": "The peers and the switch laid out in Packet Tracer."},
+            {"file": None, "title": "IP configuration", "caption": "Addresses and subnet masks set on the peers."},
+            {"file": None, "title": "Connectivity test", "caption": "Ping results between peers."},
+            {"file": None, "title": "Simulation mode", "caption": "A packet travelling between two peers."},
         ],
     },
 }
